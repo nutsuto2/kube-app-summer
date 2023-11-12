@@ -9,4 +9,4 @@ spec:
       protocol: TCP
   selector:
     app: vpromq01
-  type: CluserIP
+  type: ClusterIP
