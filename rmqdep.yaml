@@ -11,7 +11,8 @@ spec:
   replicas: 1
   template:
     metadata:
-      name: vpromq01
+      labels:
+        app: vpromq01
     spec:
       containers:
         - name: vpromq01
@@ -19,11 +20,11 @@ spec:
           ports:
             - name: vpromq01-port
               containerPort: 15672
-        env:
-          - name: RABBITMQ_DEFAULT_PASS
-            valueFrom:
-              secretKeyRef:
-                name: app-secret
-                key: rmq-pass
-          - name: RABBITMQ_DEFAULT_USER
-            value: "guest"
+          env:
+            - name: RABBITMQ_DEFAULT_PASS
+              valueFrom:
+                secretKeyRef:
+                  name: app-secret
+                  key: rmq-pass
+            - name: RABBITMQ_DEFAULT_USER
+              value: "guest"
